@@ -1,4 +1,4 @@
-import GameObject from "./objects/object";
+import GameObject from "./classes/object";
 import { Collision } from "./types";
 
 export function checkIfTwoGameObjectsAreColliding(object1: GameObject, object2: GameObject): Collision {
