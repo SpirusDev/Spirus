@@ -1,6 +1,10 @@
 ![spirus](/public/made_with_spirus.png?height=100)
 # Spirus
-HTML5 Electron Typescript Canvas game engine thing, scrapped off one of my games called Yushite
+HTML5 Electron Typescript Canvas framework thing, scrapped off one of my games called Yushite.
+
+Includes OOTB:
+- The base framework
+- A mouse-collision detection hello world project
 
 ## How to use?
 Download with degit
