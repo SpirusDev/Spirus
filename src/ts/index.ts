@@ -47,7 +47,7 @@ function update(): void {
 
 function start(): void {
 	update();
-	setTimeout(start, 50);
+	requestAnimationFrame(start);
 }
 
 if (!config.spirusOptions.madeWithSpirusWatermark) {
