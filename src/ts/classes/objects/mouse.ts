@@ -3,7 +3,7 @@ import { checkIfTwoGameObjectsAreColliding } from "../../utils";
 import GameObject from "../object";
 
 export class Mouse extends GameObject {
-	public color: Color = Color.blue;
+	public color: Color = Color.light_blue;
 	public callback(tick: number, objects: GameObject[], canvas: any): void {
 		const clone = new Mouse(this.transform, this.objType, this.options)
 		canvas.addEventListener("mousemove", (e: any) => {
@@ -18,12 +18,13 @@ export class Mouse extends GameObject {
 			if (v.transform != clone.transform && v.objType == ObjectType.square) {
 				console.log(v)	
 				if (checkIfTwoGameObjectsAreColliding(clone, v).overall) {
-					clone.color = Color.red;
+					clone.color = Color.light_blue;
 				} else {
-					clone.color = Color.brown;
+					clone.color = Color.red;
 				}
 			}
 		})
 
+		this.color = clone.color
 	}
 }
