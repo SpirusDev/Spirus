@@ -8,9 +8,10 @@
     "publish": "npm run build",
     "build": "npm run build:webpack && npm run build:electron",
     "build:webpack": "webpack --config webpack.config.js",
-    "watch": "npm-run-all --parallel watch:webpack watch:server",
-    "watch:webpack": "webpack --config webpack.config.js --watch",
-    "watch:server": "nodemon \"./dist/bundle.js\" --exec \"electron .\" --watch"
+    "build:electron": "echo \"No electron build specified\" && exit 1",
+    "dev": "run-p dev:webpack dev:electron",
+    "dev:webpack": "cross-env ELECTRON_WEBPACK_PORT=7458 NODE_ENV=development webpack-dev-server",
+    "dev:electron": "cross-env ELECTRON_WEBPACK_PORT=7458 electron ."
   },
   "keywords": [
     "HTML5",
@@ -20,21 +21,24 @@
     "electron"
   ],
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "electron": "^18.0.3",
     "electron-packager": "^15.4.0",
+    "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "sass": "^1.49.11",
     "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
     "ts-loader": "^9.2.8",
     "typescript": "^4.6.3",
     "webpack": "^5.71.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
-    "discord-rich-presence": "^0.0.8",
-    "style-loader": "^3.3.1"
+    "discord-rich-presence": "^0.0.8"
   },
   "author": "SpirusDev",
   "license": "MIT",

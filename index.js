@@ -1,34 +1,35 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, shell } = require("electron");
 
-const config = require("./spirus.config")
+const dev = !app.isPackaged;
+const config = require("./spirus.config");
 
-const discordClientID = config.discordRPC.clientID
-let client = null
+const discordClientID = config.discordRPC.clientID;
+let discordClient = null;
+if (config.discordRPC.enabled == true)
+    discordClient = require("discord-rich-presence")(discordClientID);
 
-if (config.discordRPC.enabled == true) {
-	client = require('discord-rich-presence')(discordClientID)
+function createWindow() {
+    const win = new BrowserWindow({
+        width: config.window.width,
+        height: config.window.height,
+        icon: "./assets/favicon.png",
+    });
+
+    win.webContents.addListener("new-window", (e, url) => {
+        e.preventDefault();
+        shell.openExternal(url);
+    });
+
+    if (dev) win.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_PORT}`);
+    else win.loadFile("./dist/index.html");
 }
 
-const createWindow = () => {
-	const win = new BrowserWindow({
-		width: config.window.width,
-		height: config.window.height,
-		icon: "./public/favicon.png"
-	})
-	win.webContents.addListener('new-window', function(e, url) {
-		e.preventDefault();
-		require('electron').shell.openExternal(url);
-	});
+app.on("ready", () => createWindow);
 
-	win.loadFile('./public/index.html')
-}
+app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+});
 
-app.whenReady().then(() => {
-	createWindow()
-
-	app.on('activate', () => {
-		if (BrowserWindow.getAllWindows().length === 0) createWindow()
-	})
-
-	console.log(client)
-})
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") app.quit();
+});

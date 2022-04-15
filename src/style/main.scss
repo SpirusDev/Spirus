@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    overflow: hidden;
+    margin: 0;
+}
+
+canvas {
+    border: 1px solid black;
+    height: 100%;
+    width: 100%;
+
+    background-color: black;
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
