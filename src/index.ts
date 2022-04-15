@@ -8,17 +8,10 @@ import * as config from "../spirus.config";
 const canvas = document.querySelector("canvas")!;
 const ctx = canvas.getContext("2d")!;
 if (ctx == null) throw new Error("Canvas context is null");
+ctx.imageSmoothingEnabled = false;
 
 function render() {
-
-    const ratio = window.devicePixelRatio;
-
-    // Hooray! No more stupid browser scaling!
-    canvas.width = config.window.width * ratio;
-    canvas.height = config.window.height * ratio;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.imageSmoothingEnabled = false;
-
     objects.forEach(obj => {
         if (obj.color != null) {
             ctx.fillStyle = obj.color.toString();
@@ -35,9 +28,13 @@ function render() {
     });
 }
 
-function update(): void {
+function update(delta: number): void {
     objects.forEach(obj => {
-        obj.callback(objects, canvas);
+        if (!obj._loaded) {
+            obj.load(canvas);
+            obj._loaded = true;
+        }
+        obj.update(delta, objects, canvas);
     });
     render();
 }
@@ -59,3 +56,11 @@ function run(fn: (delta: number) => void): void {
 }
 
 run(update);
+
+window.addEventListener("resize", fixSize);
+fixSize();
+function fixSize() {
+    const ratio = window.devicePixelRatio;
+    canvas.width = config.window.width * ratio;
+    canvas.height = config.window.height * ratio;
+}

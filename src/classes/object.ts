@@ -1,15 +1,22 @@
 import { Transform, ObjectType, Vector, Vector2, Color, Options } from "../types";
 
 export default class GameObject {
-    constructor (
+    /** @private */
+    _loaded: boolean;
+
+    constructor(
         public transform: Transform,
         public objType: ObjectType,
 
         public options?: Options,
-    ) {}
+    ) {
+        this._loaded = false;
+    }
 
-    public color: Color = Color.white
-    public callback(_objects: GameObject[], _canvas: any) {}
+    public color: Color = Color.white;
+    public update(_delta: number, _objects: GameObject[], _canvas: HTMLCanvasElement) {}
+
+    public load(_canvas: HTMLCanvasElement) {}
 
     get position(): Vector2 {
         return this.transform.position;

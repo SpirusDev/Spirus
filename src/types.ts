@@ -49,14 +49,14 @@ export enum Color {
 }
 
 export enum FontType {
-    Arial = "Arial"
+    Arial
 }
 
 export type Type = "px" | "em";
 export type Size = number;
 
 export type FontSize = `${Size}${Type}`;
-export type Font = `${FontSize} ${FontType}`;
+export type Font = `${FontSize} ${keyof typeof FontType}`;
 
 export enum ObjectType {
     square,
