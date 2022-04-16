@@ -1,6 +1,6 @@
 import "./style/main.scss";
 import { Color, ObjectType } from "./types";
-import { objects } from "./classes/listofobjects"
+import { objects } from "./classes/object"
 
 // @ts-ignore
 import * as config from "../spirus.config";
