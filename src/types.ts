@@ -49,10 +49,13 @@ export enum Color {
 }
 
 export enum FontType {
-    Arial
+    Default,
+    Arial,
+    Roboto,
+    Lato
 }
 
-export type Type = "px" | "em";
+export type Type = "px" | "em" | "rem";
 export type Size = number;
 
 export type FontSize = `${Size}${Type}`;
