@@ -52,7 +52,7 @@ export enum FontType {
     Arial
 }
 
-export type Type = "px" | "em" | "rem" | "vh" | "vw" | "vmin" | "vmax";
+export type Type = "px" | "em" | "rem";
 export type Size = number;
 
 export type FontSize = `${Size}${Type}`;
