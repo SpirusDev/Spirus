@@ -29,7 +29,7 @@ eclipse@root $: npm install
 Now develop real-time with
 
 ```bash
-eclipse@root $: npm run watch
+eclipse@root $: npm run dev
 ```
 
 You should get an electron window pop up, if so then good job.
