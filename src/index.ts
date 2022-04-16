@@ -22,6 +22,8 @@ function render() {
         } else if (obj.objType == ObjectType.text && obj.options != null && obj.options.text != null) {
             ctx.font = obj.options.text.font;
             ctx.fillText(obj.options.text.text, obj.position.x, obj.position.y);
+        } else if (obj.objType == ObjectType.blank) {
+            // literally dont do anything lol?????
         }
 
         ctx.fillStyle = Color.white;
