@@ -1,6 +1,6 @@
-import { objects } from "./classes/listofobjects";
 import GameObject from "./classes/object";
 import { Collision } from "./types";
+import { objects } from './classes/object';
 
 export function isColliding(object1: GameObject, object2: GameObject): Collision {
     let aLeftOfB = (object1.position.x + object1.scale.x) < object2.position.x;
