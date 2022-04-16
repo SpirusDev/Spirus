@@ -58,6 +58,7 @@ function run(fn: (delta: number) => void): void {
 run(update);
 
 window.addEventListener("resize", fixSize);
+
 fixSize();
 function fixSize() {
     const ratio = window.devicePixelRatio;
