@@ -14,7 +14,7 @@ Includes OOTB:
 Download with degit
 
 ```bash
-eclipse@root $: npx degit spirusdev/spirus spirus-project
+eclipse@root $: npx degit spirusdev/template spirus-project
 eclipse@root $: cd spirus-project
 ```
 
@@ -36,12 +36,10 @@ You should get an electron window pop up, if so then good job.
 
 ## Compilation
 
-If you wish to compile, you will have to do it yourself.
-Use something like electron-packager, but make sure to build.
+If you wish to compile, run this command
 
 ```bash
 eclipse@root $: npm run build
 ```
 
-Or if you just want the HTML file for an HTML5 build (e.g: itch.io),
-simply copy the `/public` folder. Remember that electron-only nessescities may not work.
+After that, go into `/dist` and *voila*! Your newly prepared `index.html`, `index.css` and `index.js` are ready
