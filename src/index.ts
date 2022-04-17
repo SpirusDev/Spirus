@@ -10,7 +10,7 @@ const ctx = canvas.getContext("2d")!;
 if (ctx == null) throw new Error("Canvas context is null");
 ctx.imageSmoothingEnabled = false;
 
-function render() {
+export function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     objects.forEach(obj => {
         if (obj.color != null) {
@@ -30,7 +30,7 @@ function render() {
     });
 }
 
-function update(delta: number): void {
+export function update(delta: number): void {
     objects.forEach(obj => {
         if (!obj._loaded) {
             obj.load(canvas);
@@ -41,7 +41,8 @@ function update(delta: number): void {
     render();
 }
 
-function run(fn: (delta: number) => void): void {
+export function run(fn: /*(delta: number) => void*/ any): void {
+    console.log('setup')
     let last = performance.now();
     let delta = 0;
 
@@ -57,13 +58,15 @@ function run(fn: (delta: number) => void): void {
     loop(performance.now());
 }
 
-run(update);
-
-window.addEventListener("resize", fixSize);
-
-fixSize();
-function fixSize() {
+export function fixSize() {
     const ratio = window.devicePixelRatio;
     canvas.width = config.window.width * ratio;
     canvas.height = config.window.height * ratio;
+}
+
+export default function setup() {
+    window.addEventListener("resize", fixSize);
+    run(update);
+    fixSize();
+    console.log("%c✨Spirus✨\nThank you for using Spirus~!\n\nhttps://github.com/SpirusDev/Spirus")
 }
