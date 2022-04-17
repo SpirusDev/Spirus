@@ -57,6 +57,7 @@ export class Game {
                 this.ctx.fillStyle = obj.color.toString();
             } else this.ctx.fillStyle = Color.black;
 
+            // set context rotation for, well rotation :/
             this.ctx.rotate(obj.rotation.x * Math.PI / 180);
 
             if (obj.objType == ObjectType.square) {
