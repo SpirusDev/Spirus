@@ -1,9 +1,10 @@
 {
 	"compilerOptions": {
         "outDir": "./dist",
+        "rootDir": "./src",
 		"pretty": true,
         "lib": ["es2020", "DOM"],
-        "target": "es2017",
+        "target": "es5",
         "moduleResolution": "node",
 
         "declaration": true,
@@ -22,5 +23,7 @@
         "alwaysStrict": true,
         "preserveConstEnums": true,
         "newLine": "lf",
-    }
+    },
+    "exclude": ["node_modules", "dist"],
+    "include": ["src/**/*.ts"]
 }

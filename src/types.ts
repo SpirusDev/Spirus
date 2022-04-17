@@ -60,5 +60,6 @@ export type Font = `${FontSize} ${keyof typeof FontType}`;
 
 export enum ObjectType {
     square,
-    text
+    text,
+    blank
 }

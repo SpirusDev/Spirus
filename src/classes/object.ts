@@ -1,4 +1,4 @@
-import { Transform, ObjectType, Vector, Vector2, Color, Options } from "../types";
+import { Transform, ObjectType, Vector, Vector2, Color, Options, Font } from '../types';
 
 export default class GameObject {
     /** @private */
@@ -28,5 +28,21 @@ export default class GameObject {
 
     get scale(): Vector2 {
         return this.transform.scale;
+    }
+}
+
+export const objects: GameObject[] = [];
+
+export class Blank extends GameObject {}
+export class Text extends GameObject {
+    constructor(
+        transform: Transform,
+        public text: string,
+        public font: Font,
+    ) {
+        super(transform, ObjectType.text);
+        this.objType = ObjectType.text;
+        this.options = { text: { text, font } };
+        this.color = Color.white;
     }
 }
