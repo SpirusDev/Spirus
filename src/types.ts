@@ -63,3 +63,11 @@ export enum ObjectType {
     text,
     blank
 }
+
+
+export type GameConfig = {
+    size: {
+        width: number,
+        height: number
+    }
+};
