@@ -29,5 +29,12 @@
   "bugs": {
     "url": "https://github.com/SpirusDev/Spirus/issues"
   },
-  "homepage": "https://github.com/SpirusDev/Spirus#readme"
+  "homepage": "https://github.com/SpirusDev/Spirus#readme",
+  "files": [
+    "package.json",
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "assets/**/*"
+  ]
 }

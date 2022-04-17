@@ -1,22 +1,17 @@
-import { Transform, ObjectType, Vector, Vector2, Color, Options, Font } from '../types';
+import { Transform, ObjectType, Vector, Vector2, Color, Options, Font } from './types';
 
-export default class GameObject {
-    /** @private */
-    _loaded: boolean;
-
+export default abstract class GameObject {
     constructor(
         public transform: Transform,
         public objType: ObjectType,
 
         public options?: Options,
-    ) {
-        this._loaded = false;
-    }
+    ) { }
 
     public color: Color = Color.white;
     public update(_delta: number, _objects: GameObject[], _canvas: HTMLCanvasElement) {}
 
-    public load(_canvas: HTMLCanvasElement) {}
+    public preload(_canvas: HTMLCanvasElement) {}
 
     get position(): Vector2 {
         return this.transform.position;
@@ -30,8 +25,6 @@ export default class GameObject {
         return this.transform.scale;
     }
 }
-
-export const objects: GameObject[] = [];
 
 export class Blank extends GameObject {}
 export class Text extends GameObject {
