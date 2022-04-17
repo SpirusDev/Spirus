@@ -1,9 +1,12 @@
-![spirus](/spirus_logo.png?height=100)
+![spirus](/assets/spirus_logo.png)
+![npm](https://img.shields.io/npm/v/spirus)
+![Discord](https://img.shields.io/discord/942973329386655805?color=5865F2&label=discord&logo=discord&logoColor=FFFFFF)
 
 # Spirus
 
-HTML5 Electron Typescript Canvas framework thing, scrapped off one of my games called Yushite.
+A HTML5 canvas typescript framework, scrapped off one of my games called Yushite.
+Check out the [template](https://github.com/SpirusDev/template) for Spirus to start.
 
-Includes OOTB:
+## Development
 
-- The base framework
+Pull requests and issues are always welcome!
