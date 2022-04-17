@@ -1,4 +1,4 @@
-![spirus](/spirus_logo.png?height=100)
+![spirus](/assets/spirus_logo.png?height=100)
 
 # Spirus
 
