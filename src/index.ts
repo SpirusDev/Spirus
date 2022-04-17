@@ -69,8 +69,8 @@ export default function setup() {
 
     run(update);
 
-    // window.addEventListener("resize", fixSize);
-    // fixSize();
+    window.addEventListener("resize", fixSize);
+    fixSize();
 
-    console.log("%c✨Spirus✨\nThank you for using Spirus~!\n\nhttps://github.com/SpirusDev/Spirus")
+    console.log("%c✨Spirus✨\n", "font-size: 2em; font-weight: bold; color: #ffffff;", "\tThank you for using Spirus~!\n\nhttps://github.com/SpirusDev/Spirus");
 }
