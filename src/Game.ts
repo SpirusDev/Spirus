@@ -57,6 +57,8 @@ export class Game {
                 this.ctx.fillStyle = obj.color.toString();
             } else this.ctx.fillStyle = Color.black;
 
+            this.ctx.rotate(obj.rotation.x * Math.PI / 180);
+
             if (obj.objType == ObjectType.square) {
                 this.ctx.fillRect(obj.position.x + this.canvas.width * 0.5, this.canvas.height - (obj.position.y + this.canvas.height * 0.5), obj.scale.x, obj.scale.y);
             } else if (obj.objType == ObjectType.text && obj.options != null && obj.options.text != null) {
@@ -67,6 +69,8 @@ export class Game {
             }
 
             this.ctx.fillStyle = Color.white;
+            // reset context
+            this.ctx.rotate(0 * Math.PI / 180);
         });
     }
 
