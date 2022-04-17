@@ -2,15 +2,15 @@ import "./style/main.scss";
 import { Color, ObjectType } from "./types";
 import { objects } from "./classes/object"
 
+let canvas: HTMLCanvasElement = document.querySelector("canvas")!;
+
 // @ts-ignore
 import * as config from "../spirus.config";
 
-const canvas = document.querySelector("canvas")!;
-const ctx = canvas.getContext("2d")!;
-if (ctx == null) throw new Error("Canvas context is null");
-ctx.imageSmoothingEnabled = false;
-
 export function render() {
+    const ctx = canvas.getContext('2d')!;
+    ctx.imageSmoothingEnabled = false;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     objects.forEach(obj => {
         if (obj.color != null) {
@@ -42,7 +42,6 @@ export function update(delta: number): void {
 }
 
 export function run(fn: /*(delta: number) => void*/ any): void {
-    console.log('setup')
     let last = performance.now();
     let delta = 0;
 
@@ -65,8 +64,13 @@ export function fixSize() {
 }
 
 export default function setup() {
-    window.addEventListener("resize", fixSize);
+    canvas = document.querySelector("canvas")!;
+    if (canvas == null) throw new Error("Canvas is null!");
+
     run(update);
-    fixSize();
+
+    // window.addEventListener("resize", fixSize);
+    // fixSize();
+
     console.log("%c✨Spirus✨\nThank you for using Spirus~!\n\nhttps://github.com/SpirusDev/Spirus")
 }
